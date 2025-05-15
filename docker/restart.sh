@@ -5,7 +5,7 @@ set -e
 CONTAINER_NAME="kubsu_runner"
 
 echo "Pulling latest image..."
-podman pull kalininasofa/dzlinux:latest
+podman pull docker.io/kalininasofa/dzlinux:latest
 
 if podman container exists "$CONTAINER_NAME"; then
     echo "Removing existing container..."
