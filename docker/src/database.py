@@ -2,7 +2,7 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker, declarative_base
 import os
 
-if os.getenv("TESTING"):
+if os.getenv("TEST"):
     DATABASE_URL = "postgresql+psycopg://test:test@localhost:5432/testdb"
 else:
     DATABASE_URL = "postgresql+psycopg://kubsu:kubsu@127.0.0.1:5432/kubsu"
