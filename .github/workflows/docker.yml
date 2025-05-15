@@ -1,4 +1,4 @@
-name: Depl
+name: Deploy
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
         fetch-depth: 0
 
     - name: Build Docker image
-      run: | 
+      run: |
         docker build \
         -t ${{ secrets.DOCKER_USER }}/dzlinux:build-${{ github.sha }} \
         -t ${{ secrets.DOCKER_USER }}/dzlinux:latest \
@@ -41,7 +41,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      
       - name: Build app image
         run: |
           docker build \
@@ -53,7 +52,6 @@ jobs:
           echo "Docker image built successfully"
           docker images | grep ${{ secrets.DOCKER_USER }}/dzlinux
 
-      
       - name: Run tests
         run: |
           docker run --network host \
@@ -80,5 +78,3 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
           script: cd $HOME/tasks/docker && ./restart.sh
- 
-    
